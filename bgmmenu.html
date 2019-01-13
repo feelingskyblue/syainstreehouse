@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+<TITLE></TITLE>
+<STYLE TYPE="text/css">
+<!--
+BODY{
+		
+				
+				
+		scrollbar-base-color:#000000;
+scrollbar-arrow-color:#ffffff;
+scrollbar-shadow-color:#000000;
+scrollbar-darkshadow-color:#000000;
+scrollbar-3dlight-color:#000000;
+scrollbar-highlight-color:#000000;
+scrollbar-track-color:#000000;
+}-->
+</STYLE>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+P {
+		
+				
+				
+		line-height: 1.1em; 
+} 
+
+-->
+</STYLE>
+<Style Type="text/css">
+<!--
+A{
+		
+				
+				
+		text-decoration:none;
+}
+//-->
+
+<!--
+a:linka:visiteda:active{
+	color:#cccc00;
+	text-decoration:none;
+}
+a:hover{
+				
+				
+				
+	border-bottom:3px double #cccc00;
+}
+-->
+
+</Style>
+<script src="/syainstreehouse/js/midi/stream.js"></script>
+<script src="/syainstreehouse/js/midi/midifile.js"></script>
+<script src="/syainstreehouse/js/midi/replayer.js"></script>
+<script src="/syainstreehouse/js/midi/synth.js"></script>
+<script src="/syainstreehouse/js/midi/audio.js"></script>
+<script>
+    function loadRemote(path, callback) {
+        var fetch = new XMLHttpRequest();
+        fetch.open('GET', path);
+        fetch.overrideMimeType("text/plain; charset=x-user-defined");
+        fetch.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                /* munge response into a binary string */
+                var t = this.responseText || "" ;
+                var ff = [];
+                var mx = t.length;
+                var scc= String.fromCharCode;
+                for (var z = 0; z < mx; z++) {
+                    ff[z] = scc(t.charCodeAt(z) & 255);
+                }
+                callback(ff.join(""));
+            }
+        }
+        fetch.send();
+    }
+
+    function play(file) {
+        loadRemote(file, function(data) {
+            midiFile = MidiFile(data);
+            synth = Synth(44100);
+            replayer = Replayer(midiFile, synth);
+            audio = AudioPlayer(replayer);
+        })
+    }
+    if(FileReader){
+        function cancelEvent(e){
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        document.addEventListener('dragenter', cancelEvent, false);
+        document.addEventListener('dragover', cancelEvent, false);
+        document.addEventListener('drop', function(e){
+            cancelEvent(e);
+            for(var i=0;i<e.dataTransfer.files.length;++i){
+                var
+                    file = e.dataTransfer.files[i]
+                ;
+                if(file.type != 'audio/midi'){
+                    continue;
+                }
+                var
+                    reader = new FileReader()
+                ;
+                reader.onload = function(e){
+                    midiFile = MidiFile(e.target.result);
+                    synth = Synth(44100);
+                    replayer = Replayer(midiFile, synth);
+                    audio = AudioPlayer(replayer);
+                };
+                reader.readAsBinaryString(file);
+            }
+        }, false);
+    }
+</script>
+</HEAD>
+<BODY text="#ffffff" bgcolor="#000000" link="#cccc00" vlink="#cccc00" alink="#cccc00" style="background-image : url(/syainstreehouse/images/dt-line.png);background-repeat : repeat-x;background-attachment : fixed;background-position : center top;">
+<P align=center><FONT size="-2">ＢＧＭ　　</FONT><FONT color=#ffff00 size=-2><FONT color="#00cccc" size="-2">小さな星の優しい歌</FONT></FONT><FONT size=-2>　<a href="javascript:void(play('/syainstreehouse/2007-065.mid'))">on</a> <A href="bgmmenu.html">off</A><BR>
+music by　<a href="http://enraimirai.jp/" target="_blank">遠来未来</a></FONT></P>
+</BODY>
+</HTML>

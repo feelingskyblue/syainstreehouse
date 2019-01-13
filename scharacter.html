@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<title></title>
+<style>
+  body {
+    margin: 0;
+    background: #000000;
+  }
+  .wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  .contentArea {
+    width: calc(100% - 350px);
+    height: 100%;
+  }
+  .menuAreaRight {
+    width: 175px;
+    height: 100%;
+  }
+  .menuAreaLeft {
+    width: 175px;
+    height: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="menuAreaLeft">
+      <iframe src="smenu1.html" frameborder="0" name="menuFrame1"></iframe>
+    </div>
+    <div class="contentArea">
+      <iframe src="scharatop.html" frameborder="0" name="contentCenterFrame"></iframe>
+    </div>
+    <div class="menuAreaRight">
+      <iframe src="smenu2.html" frameborder="0" name="menuFrame2"></iframe>
+    </div>
+  </div>
+</body>
+</html>
