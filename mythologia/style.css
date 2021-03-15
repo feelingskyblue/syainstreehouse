@@ -79,11 +79,12 @@ p:not:last-child {
 .wrapper {
   background: url(myth.jpg) no-repeat bottom -280px center;
   background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
 .content {
-  max-width: 500px;
+  max-width: 550px;
   padding: 40px 4%;
   margin-left: auto;
   margin-right: 3%;
