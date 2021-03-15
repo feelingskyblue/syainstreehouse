@@ -68,17 +68,30 @@ a {
   color: skyblue;
 }
 
+p:not:last-child {
+  margin-bottom: 1.5em;
+}
+
+.heading {
+  font-weight: bold;
+}
+
 .wrapper {
-  background: url(myth.jpg) no-repeat bottom center;
+  background: url(myth.jpg) no-repeat bottom -280px center;
   background-size: cover;
   min-height: 100vh;
 }
 
 .content {
   max-width: 500px;
-  padding: 40px 16px;
-  margin: 0 auto;
+  padding: 40px 4%;
+  margin-left: auto;
+  margin-right: 3%;
   background: rgba(255, 255, 255, 0.8);
+}
+
+.contentHeader {
+  margin-bottom: 40px;
 }
 
 .indexLink li {
