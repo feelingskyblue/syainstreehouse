@@ -59,7 +59,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 body {
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
-  color: #333333;
+  color: #666666;
   font-size: 15px;
   line-height: 1.6;
 }
@@ -92,6 +92,31 @@ p:not:last-child {
 
 .contentHeader {
   margin-bottom: 40px;
+}
+
+.sectionNav {
+  margin-bottom: 40px;
+}
+
+.sectionNav div {
+  margin-bottom: 20px;
+}
+
+.sectionNav ul {
+  display: flex;
+}
+
+.sectionNav li {
+  margin-right: 1em;
+}
+
+.storySection {
+  padding: 20px 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.storySection:first-of-type {
+  border-top: 1px solid #cccccc;
 }
 
 .indexLink li {
