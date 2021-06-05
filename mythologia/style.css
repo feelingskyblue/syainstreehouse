@@ -105,6 +105,7 @@ p:not:last-child {
 
 .sectionNav ul {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .sectionNav li {
